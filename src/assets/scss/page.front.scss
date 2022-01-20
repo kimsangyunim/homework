@@ -1,0 +1,303 @@
+@import 'partials/_variables';
+@import 'partials/_mixin';
+
+/**
+ * @type layout
+ * @name page-body
+ */
+ .page-body {
+	
+}
+
+#local {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200rem;
+}
+
+
+// layout
+.page-body {
+	margin-bottom: 100rem;
+
+	.local-head {
+		@include hidden;
+	}
+	.local-body {
+	}
+	.local-util {
+
+	}
+}
+
+.content-head {
+	display: flex;
+
+	.content-title {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin: 0;
+		
+		.content-name {
+			display: block;
+		}
+
+		.content-info {
+			display: block;
+			margin-left: 8rem;
+
+			svg {
+				display: block;
+				
+				path {
+					fill: color(base, 05);
+				}
+			}
+		}
+	}
+
+	// mobile
+	@include respond-below(x-large) {
+		justify-content: flex-start;
+		flex-direction: column;
+		margin-bottom: 28rem;
+
+		.content-title {
+			order: 2;
+			margin-top: 40rem;
+			@include font((outline: body, size: x-large, weight: bold)...);
+		}
+
+		.content-path {
+			order: 1;
+			position: relative;
+
+			&::after {
+				content: '';
+				display: block;
+				position: absolute;
+				left: calc(50% - 50vw);
+				bottom: 0;
+				width: 100vw;
+				height: 1px;
+				background-color: rgba(0,0,0,0.1);
+			}
+		}
+	}
+
+	// laptop
+	@include respond-above(x-large) {
+		align-items: flex-end;
+		justify-content: space-between;
+		margin: 160rem 0 80rem;
+
+		.content-title {
+			@include font((outline: body, size: xxxx-large, weight: bold)...);
+		}
+	}
+
+	.content-path {
+		margin: 0;
+
+		.path-head {
+			@include hidden;
+		}
+		.path-body {
+			display: flex;
+			flex-wrap: wrap;
+			@include font((outline: body, size: x-small)...);
+	
+			.data-home,
+			.data-flow {
+				display: block;
+				position: relative;
+				width: 24rem;
+				min-width: 24rem;
+				height: 24rem;
+				color: color(base, 05);
+				text-align: center;
+		
+				&::after {
+					content: '';
+					display: block;
+					position: absolute;
+					top: 0;
+					right: 0;
+					bottom: 0;
+					left: 0;
+				}
+			}
+	
+			.data-home {
+				&::after {
+					background: icon(home, color(base, 05), color(base, 10));
+				}
+			}
+			
+			.data-flow {
+				&::after {
+					background: icon(chevron-right, color(base, 06), color(base, 10));
+				}
+			}
+
+			.data-item {
+				white-space: nowrap;
+			}
+	
+			a.data-item {
+				color: color(base, 05);
+				&:not(:hover) {
+					text-decoration: none;
+				}; 
+			}
+			strong.data-item {
+				@include font((weight: bold)...);
+				color: color(base, 02);
+			}
+
+			// mobile
+			@include respond-below(x-large) {
+				padding: 12rem 0;
+			}
+
+			// laptop
+			@include respond-above(x-large) {
+				@include font((outline: body, size:small)...);
+
+				.data-flow {
+					margin: 0 4rem;
+				}
+			}
+		}
+	}
+}
+
+.content-body {
+	.subsection.data-field {
+	}
+
+	.section.data-field {
+		margin-top: 56rem;
+
+		// laptop
+		@include respond-above(x-large) {
+			margin-top: 76rem;
+		}
+
+		.section-head {
+			~.section-body {
+				margin-top: 36rem;
+
+				.subsection.data-field {
+					margin-top: 36rem;
+					
+					.subsection-body {
+
+					}
+				}
+
+				// laptop
+				@include respond-above(x-large) {
+					// display: flex;
+					// flex-wrap: wrap;
+					// margin-top: 48rem;
+
+					// .subsection.data-field {
+					// 	width: calc(50% - 40rem);
+
+					// 	&:nth-child(even) {
+					// 		margin-left: 80rem;
+					// 	}
+
+					// 	&:nth-child(n+3) {
+					// 		margin-top: 48rem;
+					// 	}
+					// }
+				}
+			}
+		}
+	}
+}
+
+.subsection.data-field {
+	.subsection-head {
+		.subsection-title {
+			margin: 0;
+			color: color(base, 02);
+			@include font((outline: body, size: small, weight: bold)...);
+
+			// laptop
+			@include respond-above(x-large) {
+				@include font((outline: body, size: medium)...);
+			}
+
+			.subsection-name {
+				display: block;
+			}
+		}
+		~.subsection-body {
+			margin-top: 16rem;	
+		}
+	}
+	.subsection-body {
+
+
+		
+	}
+}
+
+.section.data-field {
+	.section-head {
+		display: flex;
+		align-items: center;
+		padding: 12rem;
+		background-color: color(secondary, 01);
+		border-radius: 10rem;
+
+		// laptop
+		@include respond-above(x-large) {
+			padding: 20rem;
+		}
+		
+		.section-title {
+			position: relative;
+			margin: 0;
+			padding-left: 0.75em; // width(1.5em) / 2 
+			color: color(base, 10);
+			@include font((outline: body, size: medium, weight: bold)...);
+
+			// laptop
+			@include respond-above(x-large) {
+				@include font((outline: body, size: large)...);
+			}
+
+			&::before {
+				content: '';
+				display: block;
+				position: absolute;
+				top: 0;
+				left: -0.375em; // padding-left(.375em) / 2
+				width: 1.5em;
+				height: 1.5em;
+				background: icon(bullet-dot, color(base, 10)) no-repeat center/cover;
+				//background: icon(bullet-dot, color(base, 10)) no-repeat center/100 auto; IE 적용 안 됨
+			}
+
+			.section-name {
+				display: block;
+			}
+		}
+	}
+
+	.section-body {
+		&[data-display-column] {
+			display: flex;
+			flex-wrap: wrap;
+
+			.subsection {
+				@include display-column(2, 80rem, 36rem);
+			}
+		}
+	}
+}

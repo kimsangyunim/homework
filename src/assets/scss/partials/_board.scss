@@ -1,0 +1,140 @@
+/*
+
+ info-board
+ 1. 정보 전달용 UIO
+ 2. 컴퍼넌트(모듈)
+ 3. 여러 다른 모듈의 조합
+*/
+
+.info-board.module-b.style-a {
+
+	&.type-c {
+		margin: 0 auto;
+		max-width: 735rem;
+
+		.board-wrap {
+			.board-body,
+			.board-head {
+				text-align: center;
+			}
+		}
+	}
+
+	.board-wrap {
+		.board-head {
+			.board-subject {
+				margin: 0;
+				@include font((outline: body, size: x-large, weight: black)...);
+				color: color(base, 01);
+
+				.wbr {
+					display: block;
+				}
+
+				// laptop
+				@include respond-above(large) {
+					@include font((outline: body, size: xxxx-large)...);
+				}
+			}
+
+			~.board-body {
+				margin-top: 60rem;
+				
+				&::before {
+					content: '';
+					display: block;
+					position: absolute;
+					transform: translateY(calc(-100% - 16rem));
+					left: 50%;
+					width: 1rem;
+					height: 28rem;
+					background-color: color(base, 06);
+				}
+			}
+		}
+		
+		.board-body {
+			position: relative;
+			.para {
+				margin: 0;
+				@include font((outline: body, size: x-small)...);
+				color: color(base, 03);
+
+				+.para {
+					margin-top: 8rem;
+				}
+
+				.wbr {
+					display: block;
+				}
+
+				// laptop
+				@include respond-above(large) {
+					@include font((outline: body, size: large)...);
+
+					.btn {
+						+.btn {
+							margin: 0 0 0 10rem;
+						}
+					}
+				}
+			}
+		}
+
+		.board-util {
+			.button-area {
+				display: flex;
+				flex-wrap: wrap;
+				margin-top: 24rem;
+
+				.btn {
+					flex-grow: 1;
+					flex-basis: 100%;
+
+					+.btn {
+						margin: 10rem 0 0 0;
+					}
+				}
+
+				// laptop
+				@include respond-above(large) {
+					flex-wrap: nowrap;
+					margin-top: 32rem;
+					padding: 0 32rem;
+
+					.btn {
+						+.btn {
+							margin: 0 0 0 10rem;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+$boardSymbolIndex: 0;
+$boardSymbol: (
+	"eye": red,
+	"start": blue,
+	"stop": green
+);
+
+.for-test {
+	@each $name, $backgroundColor in $boardSymbol {
+		$boardSymbolIndex: $boardSymbolIndex + 1;
+
+		// key 값과 같으면
+		li.#{$name} {
+			background-color: $backgroundColor;
+		}
+
+		// index와 같으면
+		li:nth-child(#{$boardSymbolIndex}) {
+			background-position: 0 calc(-100rem * #{$boardSymbolIndex});
+		}
+	}
+};

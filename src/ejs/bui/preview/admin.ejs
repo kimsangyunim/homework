@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<%-include('../_templates/_data.header.front.ejs', {
+	pageStyle: 'bui.page.snippet.css',
+	pageJavascript: ''
+}) %>
+</head>
+<body>
+<div id="wrap">
+	<!-- page -->
+	<div id="page">
+<%-include('../_templates/_header.snippet.ejs') %>
+		<!-- page-body -->
+		<div class="page-body" id="local">
+			<!-- local-head -->
+			<div class="local-head">
+				<div class="local-title"><h2 class="local-name" id="localName">preview</h2></div>
+			</div>
+			<!-- //local-head -->
+			<!-- local-body -->
+			<div class="local-body" id="content">
+				<!-- content-head -->
+				<div class="content-head"><div class="content-head"><%- include('../_mixin/_title.content.ejs', {name: 'B direct'}) %></div></div>
+				<!-- //content-head -->
+				<!-- content-body -->
+				<div class="content-body">
+				</div>
+				<!-- //content-body -->
+			</div>
+			<!-- //local-body -->
+		</div>
+		<!-- //page-body -->
+<%-include('../_templates/_footer.front.ejs') %>
+	</div>
+	<!-- //page -->
+</div>
+<script stype="text/javascript">
+	var page = {
+		"layout": [
+			{"status": "완료", "name": "레이어 팝업", "id": "layerPopup"}
+		],
+		"etc": [
+			{"status": "완료", "name": "사이트맵", "id": "siteMap"},
+			{"status": "완료", "name": "상담연락처 남기기 완료", "id": "resultInform"}
+		],
+		"main": [
+			{"status": "완료", "name": "메인", "id": "main"}
+		],
+		"tribenefit": [
+			{"status": "완료", "name": "차원이 다른 혜택 / 메인", "id": "tribenefitMain"}
+		],
+		"combi": [
+			{"status": "완료", "name": "인터넷+IPTV / 메인", "id": "combiMain"},
+			{"status": "완료", "name": "인터넷+IPTV / 안심/스마트 Giga인터넷 500M+B tv All 253채널", "id": "combi0001"},
+			{"status": "완료", "name": "인터넷+IPTV / 안심/스마트 광랜인터넷 100M+B tv 스탠다드 223채널", "id": "combi0002"}
+		],
+		"internet": [
+			{"status": "완료", "name": "인터넷", "id": "internetMain"},
+			{"status": "완료", "name": "안심/스마트 Giga인터넷(WiFi)", "id": "internet0001"},
+			{"status": "완료", "name": "안심/스마트 Giga인터넷 라이트(WiFi)", "id": "internet0002"},
+			{"status": "완료", "name": "안심/스마트 광랜인터넷(WiFi)", "id": "internet0003"}
+		],
+		"iptv": [
+			{"status": "완료", "name": "IPTV / 메인", "id": "iptvMain"},
+			{"status": "완료", "name": "IPTV / B tv All", "id": "iptv0001"},
+			{"status": "완료", "name": "IPTV / B tv 스탠다드", "id": "iptv0002"},
+			{"status": "완료", "name": "IPTV / B tv New 베이직", "id": "iptv0003"}
+		],
+		"gift": [
+			{"status": "완료", "name": "사은품", "id": "giftshopMain"}
+		],
+		"event": [
+			{"status": "완료", "name": "기획전/이벤트", "id": "eventList"}
+		]
+	};
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var listup = function(selector) {
+			var directory = './../../direct/';
+			var dataContainer = document.querySelector(selector);
+
+			Object.keys(page).forEach(function(dir) {
+				var section = document.createElement('div');
+				var sectionHead = document.createElement('div');
+				var sectionTitle = document.createElement('h4');
+				var sectionName = document.createElement('span');
+				var sectionBody = document.createElement('div');
+				var dataDisplay = document.createElement('div');
+				var dataList = document.createElement('ul');
+
+				section.className = 'section';
+				sectionHead.className = 'section-head';
+				sectionTitle.className = 'section-title';
+				sectionName.className = 'section-name';
+				sectionBody.className = 'section-body';
+
+				section.id = dir;
+				sectionName.textContent = dir;
+				sectionTitle.appendChild(sectionName);
+				sectionHead.appendChild(sectionTitle);
+
+				Array.prototype.forEach.call(page[dir], function(data) {
+					var dataItem = document.createElement('li');
+					var dataArea = document.createElement('a');
+					var dataHead = document.createElement('span');
+					var dataName = document.createElement('span');
+					var dataBody = document.createElement('span');
+
+					dataDisplay.className = 'data-display style-bui type-a';
+					dataList.classList.add('data-list');
+
+					dataItem.title = data.status;
+					dataItem.classList.add('data-item');
+					
+					dataHead.classList.add('data-head');
+					dataName.textContent = data.name;
+					dataName.classList.add('data-name');
+					
+					dataArea.classList.add('data-area');
+					dataArea.setAttribute('target', '_blank');
+					dataArea.setAttribute('href', directory + section.id + '/' + data.id + '.html');
+					
+					dataBody.classList.add('data-body');
+					dataBody.textContent = data.id + '.html';
+					
+					dataHead.appendChild(dataName);
+					dataArea.appendChild(dataHead);
+					dataArea.appendChild(dataBody);
+					dataItem.appendChild(dataArea);
+					dataList.appendChild(dataItem);
+				});
+				
+				dataDisplay.appendChild(dataList);
+				sectionBody.appendChild(dataDisplay);
+
+				section.appendChild(sectionHead);
+				section.appendChild(sectionBody);
+				dataContainer.appendChild(section);
+
+				// 페이지 전체 열기
+				// var openPage = document.createElement('button');
+				// openPage.textContent = '모두열기';
+				// sectionHead.appendChild(openPage);
+				// openPage.addEventListener('click', function() {
+				// 	var container = document.getElementById(section.id);
+				// 	Array.prototype.forEach.call(container.querySelectorAll('a'), function(page) {
+				// 		page.click();
+				// 	});
+				// });
+			});
+		}
+
+		listup('.content-body');
+	});
+</script>
+</body>
+</html>

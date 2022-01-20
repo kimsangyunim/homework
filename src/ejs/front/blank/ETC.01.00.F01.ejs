@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<%-include('../_templates/_data.head.front.ejs', {
+	layoutTemplate: 'etc',
+	pageStyle: 'etc',
+	pageJavascript: ''
+}) %>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<!-- page -->
+	<div id="page">
+<%-include('../_templates/_header.etc.ejs', {
+	pageName: '외부페이지 header',
+}) %>
+		<!-- page-body -->
+		<div class="page-body page-etc-error">
+			<!-- local -->
+			<div id="local">
+				<!-- local-head -->
+				<div class="local-head">
+					<h2 class="local-title" id="localTitle"><span class="local-name">error 페이지</span></h2>
+				</div>
+				<!-- //local-head -->
+				<!-- local-body -->
+				<div class="local-body">
+					<!-- content -->
+					<div id="content">
+						<!-- content-body -->
+						<div class="content-body">
+							<!-- info-board -->
+							<div class="info-board module-a style-a type-c attr-error">
+								<div class="board-wrap">
+									<div class="board-head">
+										<p class="board-subject"><span class="wbr">이용에 불편을 드려 죄송합니다.</span></p>
+									</div>
+									<div class="board-body">
+										<p class="para">방문하시려는 웹 페이지의 주소가 잘못 입력되었거나, 일시적인 오류 혹은 변경으로 요청하신 페이지를 찾을 수 없습니다. 입력하신 주소가 정확한지 다시 한번 확인해 주시기 바랍니다.<br />감사합니다.</p>
+										<!-- <p class="para"><span class="wbr">방문하시려는 웹 페이지의 주소가 잘못</span> <span class="wbr">입력되었거나,</span> <span class="wbr">일시적인 오류 혹은 변경으로</span> <span class="wbr">요청하신 페이지를 찾을 수 없습니다.</span> <span class="wbr">입력하신 주소가 정확한지</span> <span class="wbr">다시 한번 확인해 주시기 바랍니다.</span> <span class="wbr">감사합니다.</span></p> -->
+									</div>
+									<div class="board-util">
+										<div class="button-area module-a style-a type-c">
+											<a class="btn module-b style-c type-fill accent-01 x-large" href="#"><span class="btn-text">메인으로 이동하기</span></a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- //info-board -->
+						</div>
+						<!-- //content-body -->
+					</div>
+					<!-- //content -->
+				</div>
+				<!-- //local-body -->
+				<%-include('../_templates/_local.util.ejs') %>
+			</div>
+			<!-- //local -->
+		</div>
+		<!-- //page-body -->
+	</div>
+	<!-- //page -->
+</div>
+<hr />
+<%-include('../_templates/_content.popup.ejs') %>
+<script stype="text/javascript">
+	document.addEventListener('DOMContentLoaded', function() {
+		// infoPopup.active('contentsShare');
+	});
+</script>
+</body>
+</html>

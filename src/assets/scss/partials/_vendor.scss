@@ -1,0 +1,15 @@
+
+.google-chart {
+	width: 100%;
+	height: 360rem;
+
+	>div {
+		width: 100% !important;
+		>div {
+			// width: auto;
+			svg {
+				max-width: 100%;
+			}
+		}
+	}
+}

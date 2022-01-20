@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<%-include('../_templates/_data.head.front.ejs', {
+	layoutTemplate: 'front',
+	pageStyle: 'front',
+	pageJavascript: 'front'
+}) %>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+<body>
+<div id="wrap">
+	<!-- page -->
+	<div id="page">
+<%-include('../_templates/_header.front.ejs', {
+	pageName: 'a',
+}) %>
+		<!-- page-body -->
+		<div class="page-body page-mgmt-stability">
+			<!-- local -->
+			<div id="local">
+				<!-- local-head -->
+				<div class="local-head">
+					<h2 class="local-title" id="localTitle"><span class="local-name">기업 경영 현황/수준</span></h2>
+				</div>
+				<!-- //local-head -->
+				<!-- local-body -->
+				<div class="local-body">
+					<!-- content -->
+					<div id="content">
+						<!-- content-head -->
+						<div class="content-head">
+							<h3 class="content-title" id="contentTitle">
+								<span class="content-name">안정성</span>
+								<a class="content-info" href="#stability" onclick="contentsPopup.active('stability'); return false;"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><title>도움말</title><path d="M11.9861 2.8L13.7822 3C15.9929 3.48366 17.9677 4.7206 19.3702 6.5C20.6673 8.36787 21.2678 10.6333 21.0666 12.9C20.8509 15.1541 19.822 17.252 18.1728 18.8C16.4712 20.3285 14.2712 21.182 11.9861 21.2C10.7904 21.1701 9.6088 20.9333 8.49359 20.5C6.39283 19.6105 4.69245 17.977 3.71697 15.9112C2.74149 13.8454 2.55922 11.4919 3.20493 9.3C3.9101 7.13526 5.36016 5.2922 7.29616 4.1C8.71997 3.2651 10.3365 2.81701 11.9861 2.8ZM11.9861 2C10.1951 2.00053 8.43726 2.48411 6.89701 3.4C4.72705 4.6536 3.1198 6.69382 2.40665 9.1C1.70388 11.4909 1.91739 14.0586 3.00536 16.3C4.04146 18.5415 5.89993 20.2966 8.19423 21.2C9.39388 21.7124 10.6821 21.9842 11.9861 22C14.4646 22.0232 16.8576 21.0926 18.6717 19.4C20.5093 17.7388 21.6799 15.4636 21.9647 13C22.1719 10.501 21.4623 8.01208 19.969 6C18.4866 4.01396 16.3143 2.65786 13.882 2.2L11.9861 2ZM10.6889 13.6V13.1C10.7062 12.7157 10.8085 12.34 10.9882 12C11.2334 11.6215 11.5364 11.284 11.8863 11C12.2486 10.8141 12.5577 10.5388 12.7844 10.2C12.8896 10.1214 12.9661 10.0103 13.0022 9.8838C13.0383 9.75732 13.0319 9.62247 12.984 9.5C13.0837 9.4 12.984 9.3 12.984 9.2C12.984 9.1 12.7844 8.9 12.6846 8.9C12.5782 8.79916 12.4528 8.72068 12.3157 8.66915C12.1786 8.61763 12.0326 8.59412 11.8863 8.6C11.1146 8.68082 10.3675 8.91904 9.69102 9.3L8.99252 7.9C9.91314 7.30223 10.989 6.98922 12.0859 7C12.844 6.9846 13.5841 7.23185 14.1814 7.7C14.4596 7.8522 14.6726 8.1012 14.7801 8.4C14.9414 8.70708 15.0107 9.05436 14.9797 9.4C14.9862 9.81934 14.883 10.2331 14.6803 10.6C14.3589 11.071 13.9528 11.4779 13.4829 11.8L12.5848 12.5C12.5047 12.6893 12.4705 12.8949 12.485 13.1V13.6H10.6889ZM12.485 15L12.0859 14.8H11.5869C11.4406 14.7941 11.2946 14.8176 11.1576 14.8692C11.0205 14.9207 10.895 14.9992 10.7887 15.1C10.6855 15.2116 10.6163 15.3504 10.5891 15.5C10.5097 15.6173 10.4744 15.759 10.4893 15.9C10.4738 16.0728 10.5084 16.2465 10.5891 16.4C10.6163 16.5496 10.6855 16.6884 10.7887 16.8C10.895 16.9008 11.0205 16.9793 11.1576 17.0308C11.2946 17.0824 11.4406 17.1059 11.5869 17.1H12.0859L12.485 16.9C12.6733 16.6372 12.7777 16.3234 12.7844 16C12.821 15.8215 12.8129 15.6367 12.7606 15.4621C12.7084 15.2876 12.6137 15.1288 12.485 15Z" fill="black"/></svg></a>
+							</h3>
+							<!-- content-path -->
+							<p class="content-path">
+								<span class="path-head">현재위치 :</span>
+								<span class="path-body">
+									<a class="data-home" href="/">홈</a>
+									<span class="data-flow">&gt;</span>
+									<a class="data-item" href="#">기업 경영 현황/수준</a>
+									<span class="data-flow">&gt;</span>
+									<strong class="data-item current">안정성</strong>
+								</span>
+							</p>
+							<!-- //content-path -->
+						</div>
+						<!-- //content-head -->
+						<!-- content-body -->
+						<div class="content-body">
+							<!-- submit-form -->
+							<fieldset class="submit-form data-finder">
+								<legend>기업과 비교하고 싶은 <span class="em">업종 및 지역을 선택</span>해주세요.</legend>
+								<div class="form-list">
+									<div class="form-item">
+										<div class="form-wrap">
+											<div class="form-head"><label class="form-name" for="selectIndustry">업종선택</label></div>
+											<div class="form-body">
+												<div class="form-area">
+													<span class="form select module-a style-b type-line normal-03 medium flex">
+														<select class="form-elem" id="selectIndustry">
+															<option>도매 및 소매업</option>
+														</select>
+													</span>
+													<span class="form select module-a style-b type-line normal-03 medium flex">
+														<select class="form-elem" title="세부 업종 선택">
+															<option>도매 및 상품 중개업</option>
+														</select>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-item">
+										<div class="form-wrap">
+											<div class="form-head"><label class="form-name" for="regionSelection">지역선택</label></div>
+											<div class="form-body">
+												<div class="form-area">
+													<span class="form select module-a style-b type-line normal-03 medium" style="min-width: calc(50% - 4rem);">
+														<select class="form-elem" id="regionSelection">
+															<option>광주광역시</option>
+														</select>
+													</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="form-util">
+									<div class="button-area">
+										<button class="btn module-b style-c type-line normal-03 small" type="submit"><span class="btn-text">조회</span></button>
+									</div>
+								</div>
+							</fieldset>
+							<!-- //submit-form -->
+							<!-- section -->
+							<div class="section data-field">
+								<div class="section-head">
+									<h4 class="section-title"><span class="section-name">다담 리테일/광주광역시 도매 및 상품 중개업 평균 경영효율성 비교</span></h4>
+								</div>
+								<div class="section-body">
+									<!-- data-table -->
+									<div class="data-table module-c style-a type-a medium">
+										<table>
+											<colgroup>
+												<col style="width: 16em;" />
+												<col />
+												<col />
+												<col />
+												<col />
+												<col />
+												<col />
+											</colgroup>
+											<thead>
+												<tr>
+													<th scope="col" rowspan="2">지표항목</th>
+													<th scope="col" colspan="2">2017</th>
+													<th scope="col" colspan="2">2018</th>
+													<th scope="col" colspan="2">2019</th>
+												</tr>
+												<tr>
+													<th scope="col">다담 리테일</th>
+													<th scope="col">비교지표</th>
+													<th scope="col">다담 리테일</th>
+													<th scope="col">비교지표</th>
+													<th scope="col">다담 리테일</th>
+													<th scope="col">비교지표</th>
+												</tr>
+											</thead>
+											<tbody style="text-align: right;">
+												<tr>
+													<td style="text-align: left;">1. 총자본순이익률(%)</td>
+													<td>22.67</td>
+													<td>16.57</td>
+													<td>32.77</td>
+													<td>18.29</td>
+													<td>19.83</td>
+													<td>20.67</td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">2. 총자본영업이익률(%)</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">3. 경영자본영업이익률(%)</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">4. 자기자본영업이익률(%)</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+												<tr>
+													<td style="text-align: left;">5. 매출액영업이익률(%)</td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+													<td></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<!-- //data-table -->
+								</div>
+							</div>
+							<!-- //section -->
+							<!-- section -->
+							<div class="section data-field">
+								<div class="section-head">
+									<h4 class="section-title"><span class="section-name">다담 리테일/광주광역시 도매 및 상품 중개업 평균 경영효율성 비교</span></h4>
+								</div>
+								<div class="section-body">
+									<!-- subsection -->
+									<div class="subsection data-field">
+										<div class="subsection-head">
+											<h5 class="subsection-title"><span class="subsection-name">1. 총자본증가율</span></h5>
+										</div>
+										<div class="subsection-body">
+											<div style="height: 160rem; background-color: rgba(255,0,0,0.1);"></div>
+										</div>
+									</div>
+									<!-- //subsection -->
+								</div>
+							</div>
+							<!-- //section -->
+							<!-- section -->
+							<div class="section data-field">
+								<div class="section-head">
+									<h4 class="section-title"><span class="section-name">다담 리테일/광주광역시 도매 및 상품 중개업 평균 경영효율성 비교</span></h4>
+								</div>
+								<div class="section-body">
+									<!-- subsection -->
+									<div class="subsection data-field">
+										<div class="subsection-head">
+											<h5 class="subsection-title"><span class="subsection-name">1. 총자본증가율</span></h5>
+										</div>
+										<div class="subsection-body">
+											<div style="height: 160rem; background-color: rgba(255,0,0,0.1);"></div>
+										</div>
+									</div>
+									<!-- //subsection -->
+								</div>
+							</div>
+							<!-- //section -->
+						</div>
+						<!-- //content-body -->
+					</div>
+					<!-- //content -->
+				</div>
+				<!-- //local-body -->
+				<%-include('../_templates/_local.util.ejs') %>
+			</div>
+			<!-- //local -->
+		</div>
+		<!-- //page-body -->
+<%-include('../_templates/_footer.front.ejs', {
+}) %>
+	</div>
+	<!-- //page -->
+</div>
+<hr />
+<%-include('../_templates/_content.popup.ejs') %>
+<script stype="text/javascript">
+	document.addEventListener('DOMContentLoaded', function() {
+		// infoPopup.active('contentsShare');
+	});
+</script>
+</body>
+</html>

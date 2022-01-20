@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<%-include('../_templates/_data.header.front.ejs', {
+	pageStyle: 'bui.page.snippet.css',
+	pageJavascript: ''
+}) %>
+</head>
+<body>
+<div id="wrap">
+	<!-- page -->
+	<div id="page">
+<%-include('../_templates/_header.snippet.ejs') %>
+		<!-- page-body -->
+		<div class="page-body" id="local">
+			<!-- local-head -->
+			<div class="local-head">
+				<div class="local-title"><h2 class="local-name" id="localName">preview</h2></div>
+			</div>
+			<!-- //local-head -->
+			<!-- local-body -->
+			<div class="local-body" id="content">
+				<!-- content-head -->
+				<div class="content-head"><div class="content-head"><%- include('../_mixin/_title.content.ejs', {name: 'front'}) %></div></div>
+				<!-- //content-head -->
+				<!-- content-body -->
+				<div class="content-body">
+				</div>
+				<!-- //content-body -->
+			</div>
+			<!-- //local-body -->
+		</div>
+		<!-- //page-body -->
+<%-include('../_templates/_footer.front.ejs') %>
+	</div>
+	<!-- //page -->
+</div>
+<script stype="text/javascript">
+	var page = {
+		"layout": [
+			{"status": "진행중", "name": "공통", "id": "page.front"},
+			{"status": "진행중", "name": "레이어 팝업", "id": "layer.popup"}
+		],
+		"common": [
+			{"status": "진행중", "name": "(pop)이메일무단수집거부", "id": "COMM.00.00.P01"}
+		],
+		"main": [
+			{"status": "진행중", "name": "메인", "id": "MAIN.00.00.F01"},
+		],
+		"mgmt": [
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 성장성", "id": "ENTE.01.00.F01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 성장성 / (pop)성장성 개념안내", "id": "ENTE.01.00.P01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 수익성", "id": "ENTE.02.00.F01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 수익성 / (pop)수익성 개념안내", "id": "ENTE.02.00.P01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 비용", "id": "ENTE.03.00.F01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 비용/ (pop)비용 개념안내", "id": "ENTE.03.00.P01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 안정성", "id": "ENTE.04.00.F01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 안정성 / (pop)안정성 개념안내", "id": "ENTE.04.00.P01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 활동성", "id": "ENTE.05.00.F01"},
+			{"status": "진행중", "name": "기업 경영 현황/수준 > 활동성 / (pop)활동성 개념안내", "id": "ENTE.05.00.P01"}
+		],
+		"product": [
+			{"status": "진행중", "name": "생산성 분석 > 메인", "id": "PROD.00.00.F01"},
+			{"status": "진행중", "name": "생산성 분석 > 메인 / (pop)생산성 분석 개념안내", "id": "PROD.00.00.P01"},
+			{"status": "진행중", "name": "생산성 분석 > 생산성", "id": "PROD.01.00.F01"},
+			{"status": "진행중", "name": "생산성 분석 > 생산성 / (pop)생산성 개념안내", "id": "PROD.01.00.P01"},
+			{"status": "진행중", "name": "생산성 분석 > 경영효율성", "id": "PROD.02.00.F01"},
+			{"status": "진행중", "name": "생산성 분석 > 경영효율성 / (pop)경영효율성 개념안내", "id": "PROD.02.00.P01"},
+			{"status": "진행중", "name": "생산성 분석 > 수익성", "id": "PROD.03.00.F01"},
+			{"status": "진행중", "name": "생산성 분석 > 수익성 / (pop)수익성 개념안내", "id": "PROD.03.00.P01"},
+			{"status": "진행중", "name": "생산성 분석 > 고객가치", "id": "PROD.04.00.F01"},
+			{"status": "진행중", "name": "생산성 분석 > 고객가치 / (pop)고객가치 개념안내", "id": "PROD.04.00.P01"}
+		],
+		"customer": [
+			{"status": "진행중", "name": "고객만족 조사 > 목록", "id": "CUST.01.00.F01"},
+			{"status": "진행중", "name": "고객만족 조사 > 상세", "id": "CUST.02.00.F01"}
+		],
+		"blank": [
+			{"status": "진행중", "name": "(외부 페이지)고객만족 설문 조사 > 작성", "id": "SURV.01.00.F01"},
+			{"status": "진행중", "name": "(외부 페이지)고객만족 설문 조사 > 완료", "id": "SURV.02.00.F01"},
+			{"status": "진행중", "name": "etc > 에러 페이지", "id": "ETC.01.00.F01"}
+		]
+	};
+
+	document.addEventListener('DOMContentLoaded', function() {
+		var listup = function(selector) {
+			var directory = './../../front/';
+			var dataContainer = document.querySelector(selector);
+
+			Object.keys(page).forEach(function(dir) {
+				var section = document.createElement('div');
+				var sectionHead = document.createElement('div');
+				var sectionTitle = document.createElement('h4');
+				var sectionName = document.createElement('span');
+				var sectionBody = document.createElement('div');
+				var dataDisplay = document.createElement('div');
+				var dataList = document.createElement('ul');
+
+				section.className = 'section';
+				sectionHead.className = 'section-head';
+				sectionTitle.className = 'section-title';
+				sectionName.className = 'section-name';
+				sectionBody.className = 'section-body';
+
+				section.id = dir;
+				sectionName.textContent = dir;
+				sectionTitle.appendChild(sectionName);
+				sectionHead.appendChild(sectionTitle);
+
+				Array.prototype.forEach.call(page[dir], function(data) {
+					var dataItem = document.createElement('li');
+					var dataArea = document.createElement('a');
+					var dataHead = document.createElement('span');
+					var dataName = document.createElement('span');
+					var dataBody = document.createElement('span');
+
+					dataDisplay.className = 'data-display style-bui type-a';
+					dataList.classList.add('data-list');
+
+					dataItem.title = data.status;
+					dataItem.classList.add('data-item');
+					
+					dataHead.classList.add('data-head');
+					dataName.textContent = data.name;
+					dataName.classList.add('data-name');
+					
+					dataArea.classList.add('data-area');
+					dataArea.setAttribute('target', '_blank');
+					dataArea.setAttribute('href', directory + section.id + '/' + data.id + '.html');
+					
+					dataBody.classList.add('data-body');
+					dataBody.textContent = data.id + '.html';
+					
+					dataHead.appendChild(dataName);
+					dataArea.appendChild(dataHead);
+					dataArea.appendChild(dataBody);
+					dataItem.appendChild(dataArea);
+					dataList.appendChild(dataItem);
+				});
+				
+				dataDisplay.appendChild(dataList);
+				sectionBody.appendChild(dataDisplay);
+
+				section.appendChild(sectionHead);
+				section.appendChild(sectionBody);
+				dataContainer.appendChild(section);
+
+				// 페이지 전체 열기
+				var openPage = document.createElement('button');
+				openPage.textContent = '모두열기';
+				sectionHead.appendChild(openPage);
+				openPage.addEventListener('click', function() {
+					var container = document.getElementById(section.id);
+					Array.prototype.forEach.call(container.querySelectorAll('a'), function(page) {
+						page.click();
+					});
+				});
+			});
+		}
+
+		listup('.content-body');
+	});
+</script>
+</body>
+</html>

@@ -1,0 +1,682 @@
+@import 'partials/_variables';
+@import 'partials/_mixin';
+@import 'partials/_contents';
+@import 'partials/_popup';
+@import 'partials/_widget';
+
+:root {
+	font-size: 1px;
+}
+
+html,
+body {
+	height: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	word-break: keep-all;
+	@include font((family: default, size: small)...);
+	-webkit-text-size-adjust: none;
+	overflow-y: scroll;
+}
+
+hr {
+	display: none;
+}
+
+img {
+	max-width: 100%;
+}
+
+
+/**
+ * @type layout
+ * @name page-skip
+ */
+.page-skip {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	position: absolute;
+	z-index: 100;
+	top: -120rem;
+	left: calc(50% - 50vw);
+	width: 100vw;
+	
+	height: 120rem;
+	background-color: color(base, 01);
+
+	.skip-item {
+		color: color(base, 10);
+		@include font((outline: body, size: medium)...);
+	}
+	
+	&:focus-within {
+		top: 0;
+	}
+}
+
+/**
+ * @type layout
+ * @name global
+ */
+#wrap {
+	display: flex;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;	
+	padding: 0 16rem;
+	
+	// laptop
+	@include respond-above(x-large) {
+		padding: 0 48rem;
+	}
+}
+
+#page {
+	display: flex;
+	width: 100%;
+	max-width: 1600rem;
+	flex-direction: column;
+	max-width: map-get($breakpoints, frame);
+	min-height: 100vh;
+	box-sizing: border-box;
+
+
+	padding-top: 60rem;
+	// laptop
+	@include respond-above(x-large) {
+		padding-top: 120rem;
+	}
+ }
+
+/* 2021-01-01 김상유 수정 : 내용 */
+#local {
+	.local-body {
+	}
+}
+
+@keyframes globalNavigations {
+	0% {
+		visibility: hidden;
+	}
+	1% {
+		visibility: visible;
+		transform: translateX(100%);
+	}
+
+	100% {
+		visibility: visible;
+		transform: translateX(0);
+	}
+}
+
+/* 2021-01-01 김상유 수정 : 내용 */
+html.mobile {
+	.page-head {
+
+	}
+}
+
+/**
+ * @type layout
+ * @name page-head
+ */
+
+.page-head {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 30;
+	box-shadow: inset 0 -1px 0 0 color(base, 07);
+	background-color: color(base, 10);
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		top: 0;
+		left: calc(50% - 50vw);
+		width: 100vw;
+		height: 100%;
+		background-color: inherit;
+		box-shadow: inherit;
+	}
+
+	// logo
+	.page-title {
+		display: flex;
+		align-items: center;
+		position: relative;
+		margin: 0;
+
+		.page-name {
+			display: block;
+			svg {
+				display: block;
+				// .st0 {fill: #e6223d;}
+				// .st1 {fill: #878787;}
+				// .st2 {fill: #313851;}
+			}
+		}
+	}
+
+	@at-root {
+		html.active-page-navi {
+			body {
+				overflow: hidden;
+			}
+		}
+	}
+
+	// page navigations
+	.section.page-navi {
+		z-index: 40;
+		
+		.section-head {
+			@include hidden;
+		}
+		.section-body {
+			.gnb-list {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				.gnb-name {
+					text-decoration: none;
+				}
+			}
+
+			.lnb-list {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				.lnb-name {
+					text-decoration: none;
+				}
+			}
+		}
+		.section-util {
+			display: flex;
+			align-items: center;
+			position: absolute;
+
+			top: 0;
+			right: 18rem;
+			height: 60rem;
+
+			.btn {
+				display: block;
+			}
+		}
+	}
+
+	// @include respond-below(x-large) {
+	// 	.lnb-item {
+	// 		width:25%;
+	// 	}
+	// }
+
+	// @include respond-below(medium) {
+	// 	.lnb-item {
+	// 		width: 33.3%;
+	// 	}
+	// }
+
+	// @include respond-below(small) {
+	// 	.lnb-item {
+	// 		width: 50%;
+	// 	}
+	// }
+
+	// mobile
+	@include respond-below(x-large) {
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 16rem;
+		height: 60rem;
+	
+		&::after {
+			content: '';
+			display: block;
+			position: fixed;
+			opacity: 0;
+			z-index: 30;
+			top: 0;
+			right: 0;
+			left: 0;
+			background-color: rgba(0,0,0,0.7);
+			transition: opacity 0.25s ease;
+		}
+	
+		// logo
+		.page-title {
+			.page-name {
+				svg {
+					width: 146rem;
+					height: 24rem;
+				}
+			}
+		}
+	
+		.section.page-navi {
+			display: none;
+			// @at-root {
+			// 	html.active-page-navi {
+			// 		.page-head::after {
+			// 			bottom: 0;
+			// 			opacity: 1;
+			// 		}
+			// 	}
+			// }
+	
+			display: flex;
+			flex-direction: column;
+			position: fixed;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			left: 0;
+			background-color: color(base, 10);
+			transform: translateX(100%);
+
+			// animation-name: globalNavigations;
+			// animation-duration: 0.25s;
+			// animation-direction: alternate; 
+			// animation-fill-mode: backwards;
+
+			&.active {
+				animation-name: globalNavigations;
+				animation-duration: 0.25s;
+				animation-direction: alternate; 
+				animation-fill-mode: forwards;
+			}
+	
+			&::before {
+				content: '';
+				display: block;
+				height: 60rem;
+				min-height: 60rem;
+				box-shadow: 0 1px 0 0 rgba(0,0,0,0.1);
+				// background: url(./../images/svg/logo_header.svg) no-repeat 16rem 50%/146rem 24rem;
+			}
+	
+			.section-body {
+				flex-grow: 1;
+				height: 100%;
+				overflow-y: auto;
+				// 커스컴 스크롤 모바일 사이즈에서도 구현되기 때문에 판단 필요
+				// @include overflow-scroll(custom);
+	
+				.gnb-list {
+					padding: 32rem;
+	
+					.gnb-item {
+						+.gnb-item {
+							margin-top: 16rem;
+						}
+	
+						.gnb-name {
+							display: block;
+							@include font((outline: body, size: medium, weight: bold)...);
+							color: color(base, 01);
+						}
+						
+						.lnb-list {
+							display: flex;
+							flex-wrap: wrap;
+							position: relative;
+							margin-top: 16rem;
+							padding-top: 20rem;
+	
+							&::before {
+								content: '';
+								display: block;
+								position: absolute;
+								top: 0;
+								right: -32rem;
+								left: 0;
+								height: 1px;
+								background-color: color(base, 06);
+							}
+	
+							.lnb-item {
+								margin-right: 40rem;
+								min-width: 80rem;
+								margin-bottom: 16rem;
+	
+								.lnb-name {
+									@include font((outline: body, size: small)...);
+									color: color(base, 03);
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	// laptop
+	@include respond-above(x-large) {
+		width: 1600rem;
+		max-width: 100%;
+		margin: 0 auto;
+		padding: 0 40rem;
+
+		.page-title {
+			width: 235rem;
+			min-width: 235rem;
+			height: 120rem;
+		}
+
+		.page-control {
+			display: none;
+		}
+	
+		// page navigations
+		.section.page-navi {
+			flex-grow: 1;
+			flex-basis: 100%;
+			margin-left: 40rem;
+			padding-right: 275rem;
+			width: 1600rem;
+
+			.section-body {
+				display: flex;
+				justify-content: center;
+	
+				.gnb-list {
+					display: flex;
+					justify-content: space-between;
+					position: relative;
+					flex-basis: 520rem;
+					height: 120rem;
+					transition: height 0.25s ease;
+
+					&::before {
+						content: '';
+						display: block;
+						position: fixed;
+						top: 120rem;
+						right: 0;
+						left: 0;
+						height: 0;
+						transition: height 0.25s ease;
+						background-color: color(base, 01);
+					}
+						
+					.gnb-item {
+						height: 120rem;
+						position: relative;
+
+						.gnb-name {
+							display: block;
+							margin: 45rem 0;
+							line-height: 1.5;
+							font-size: 20rem;
+							@include font((weight: bold)...);
+							color: color(base, 01);
+							outline-offset: -1rem;
+	
+							&:not(:hover) {
+								text-decoration: none;
+							}
+						}
+
+						&.current {
+							.gnb-name {
+								color: color(primary, 01);
+							}
+
+							&::after {
+								content: '';
+								display: block;
+								position: absolute;
+								top: calc(50% - 0.75em - 3rem);
+								right: -8rem;
+								width: 6rem;
+								height: 6rem;
+								border-radius: 50%;
+								background-color: color(primary, 01);
+							}
+						}
+	
+						.lnb-list {			
+							// 부모의 사이즈를 기준으로 확장
+							// position: absolute;
+							// top: calc(100% + 36rem);
+							// left: 0;
+							// right: 0;
+
+							// 본인의 사이즈를 갖고 중앙으로 갔을 경우
+							// position: absolute;
+							// left: 50%;
+							// transform: translateX(-50%);
+							display: flex;
+							align-items: center;
+							position: absolute;
+							left: 50%;
+							transform: translateX(-50%);
+							top: 120rem;
+							height: 80rem;
+							visibility: visible;
+							opacity: 1;
+							transition: visibility 0.25s ease, opacity 0.25s ease;
+
+							.lnb-item {
+								display: flex;
+								justify-content: center;
+								
+								+.lnb-item {
+									margin-left: 48rem;
+								}
+								
+								.lnb-name {
+									display: block;
+									font-size: 20rem;
+									@include font((outline: body, size: small, weight: bold)...);
+									color: color(base, 05);
+									white-space: nowrap;
+									text-align: center;
+									
+									&:not(:focus),
+									&:not(:hover) {
+										text-decoration: none;
+									}
+
+									&:hover {
+										text-decoration: none;
+										color: color(base, 10);
+									}
+								}
+
+								&.current {
+									.lnb-name {
+										color: color(base, 10);
+										border-bottom: 1px solid color(base, 10);
+									}
+								}
+							}
+						}
+
+						&:not(:focus-within):not(:hover) {
+							.lnb-list {
+								visibility: hidden;
+								opacity: 0;
+								transition: visibility 0.25s ease, opacity 0.25s ease;
+							}
+						}
+					}
+
+					&:focus-within::before,
+					&:hover::before {
+						height: 80rem;
+					}
+				}
+			}
+
+			.section-util {
+				display: none;
+			}
+		}
+	}
+}
+
+/**
+ * @type layout
+ * @name page-body
+ */
+.page-body {
+	flex-grow: 1;
+	width: 100%;
+	max-width: 1600rem;
+}
+
+/**
+ * @type layout
+ * @name page-foot
+ */
+
+.page-foot {
+	position: relative;
+	z-index: 20;
+	padding: 16rem 0;
+	background-color: color(secondary, 01);
+
+	// laptop
+	@include respond-above(x-large) {
+		padding: 32rem 0;
+	}
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		left: calc(50% - 50vw);
+		width: 100vw;
+		background-color: inherit;
+	}
+
+	// 기업이름
+	.company-name {
+		margin: 0 0 10rem 0;
+		padding-bottom: 8rem;
+		border-bottom: 1px solid color(base, 06, 0.2);
+
+		// laptop
+		@include respond-above(x-large) {
+			margin: 0 0 18rem 0;
+			padding-bottom: 12rem;
+		}
+
+		svg {
+			display: block;
+			width: 110.77rem;
+			height: 24rem;
+			// laptop
+			@include respond-above(x-large) {
+				width: 188px;
+				height: 40px;
+			}
+		}
+	}
+
+	// 기업정보
+	.section.company-info {
+		.section-head {
+			@include hidden;
+		}
+
+		.section-body {
+			.data-list {
+				display: flex;
+				flex-wrap: wrap;
+				overflow: hidden;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+
+				.data-item {
+					position: relative;
+					left: -16rem;
+					margin-left: 8rem;
+					padding-left: 8rem;
+					@include font((outline: body, size: xx-small)...);
+					color: color(base, 05);
+
+					// 링크가 있다면? overflow의 영향으로 offset을 안쪽으로 넣습니다.
+					a {
+						color: inherit;
+						outline-offset: -1rem;
+					}
+
+					&::before {
+						content: '';
+						position: absolute;
+						top: calc(50% - (0.75em / 2));
+						left: 0;
+						width: 1rem;
+						height: 0.75em;
+						background-color: color(base, 05);
+					}
+
+
+					// laptop
+					@include respond-above(x-large) {
+						@include font((outline: body, size: x-small)...);
+					}
+				}
+			}
+		}
+	}
+
+	.unsubscribe-email {
+		position: absolute;
+		margin: 0;
+		top: 22rem;
+		right: 0;
+
+		a {
+			display: block;
+			@include font((outline: body, size: xx-small, weight: bold)...);
+			color: color(base, 10);
+
+			&:not(:hover) {
+				text-decoration: none;
+			}
+		}
+
+		// laptop
+		@include respond-above(x-large) {
+			top: 40rem;
+			a {
+				@include font((outline: body, size: x-small)...);
+			}
+		}
+	}
+
+	.copyright {
+		margin: 6rem 0 0 0;
+		@include font((outline: body, size: xx-small)...);
+		color: color(base, 05, 0.8);
+
+		// laptop
+		@include respond-above(x-large) {
+			margin-top: 12rem;
+			@include font((outline: body, size: x-small)...);
+		}
+
+		.wbr {
+			display: block;
+		}
+	}
+}

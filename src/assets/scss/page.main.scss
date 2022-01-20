@@ -1,0 +1,98 @@
+@import 'partials/_variables';
+@import 'partials/_mixin';
+
+// 메인 이벤트
+.section.event-main,
+.section.recommend-item {
+	.section-head {
+		@include hidden;
+	}
+}
+
+
+// 상담 연락처 남기기
+.section.consult-request {
+	position: relative;
+	padding: 15px 0;
+	background-color: #ff7b00;
+
+	&::before {
+		content: '';
+		display: block;
+		position: absolute;
+		@include container;
+		z-index: -1;
+		top: 0;
+		bottom: 0;
+		background-color: inherit;
+	}
+
+	.section-head {
+		@include hidden;
+	}
+
+	.submit-form {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		
+		.form-item {
+			.form-head {
+				@include hidden;
+			}
+			.form-body {
+				display: flex;
+				align-items: center;
+
+				.form-area {
+					+.form-area {
+						margin-left: 20px;
+					}
+
+					.sign {
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						width: 20px;
+						color: color(base, 10);
+					}
+					
+					.option-select {
+						.option-head {
+							.option-name {
+								.form.checkbox {
+									@include font((outline: body, size: xx-small)...);
+									.form-text {
+										color: color(base, 10);
+										box-shadow: inset 0 -1px 0 0 color(base, 10);
+									}
+									.form-required {
+										color: color(base, 10);
+									}
+								}
+							}
+
+						}
+						.option-util {
+							margin-left: 20rem;
+	
+							.btn.module-b {
+								border-color: transparent;
+							}
+						}
+					}
+				}
+			}
+		}
+		>.button-area {
+			margin-left: 56px;
+		}
+	}
+}
+
+// 최근 이벤트
+.section.event-latest {
+	.section-head {
+		@include hidden;
+	}
+}

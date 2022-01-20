@@ -1,0 +1,39 @@
+@import 'partials/_variables';
+@import 'partials/_mixin';
+
+/**
+ * @type 
+ * @name etc
+ */
+
+.info-board.module-a { 
+	&.style-a {
+		.board-util {
+			margin-top: 28rem;
+
+			// laptop
+			@include respond-above(x-large) {
+				margin-top: 48rem;
+			}
+		}
+	}
+}
+
+/**
+ * @type layout contents
+ * @name page-survey
+ */
+
+ .page-body.page-survey {
+	.content-body {
+		margin-bottom: 28rem;
+		border-top: 2rem solid color(base, 02);
+		border-bottom: 1rem solid color(base, 06);
+		box-sizing: border-box;
+		
+		// laptop
+		@include respond-above(large) {
+		   margin-bottom: 204rem;
+	   }
+	}
+}

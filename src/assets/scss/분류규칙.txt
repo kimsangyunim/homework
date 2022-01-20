@@ -1,0 +1,31 @@
+프로렉트 명
+1. 검색
+2. 뉴스
+3. 쇼핑
+
+---------------------------------------------------------
+
+
+
+
+/* variables (mixin) */
+_variables.scss
+_mixin.scss
+
+/* module */
+_font.scss
+_button.scss
+_form.scss
+.
+.
+.
+
+/* layout */
+layout.blank.scs
+layout.front.scs
+layout.signup.scs
+
+/* page */
+page.search.css
+page.news.css
+page.shopping.css
