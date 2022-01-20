@@ -1,0 +1,1 @@
+{"version":3,"sources":["import.js"],"names":["console","log"],"mappings":";;AAAA;;AAEA;AACA;AAIAA,OAAO,CAACC,GAAR,CAAY,GAAZ","sourcesContent":["import {export1, export2} from './export.js';\r\n\r\nexport1();\r\nexport2();\r\n\r\n\r\n\r\nconsole.log('d');"],"file":"import.js"}
